@@ -63,4 +63,4 @@ spawn(function()
 	addRandomFriend()
 end)
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
+loadstring(game:HttpGet("https://scripts.alchemyhub.xyz"))()
