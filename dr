@@ -139,4 +139,4 @@ spawn(function()
 	addRandomFriend()
 end)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/x2neptunereal/Alchemy/main/gateway.luau"))({ "discord.gg/alchemyhub","x2neptune.space",true,"e4c" })
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Anoonymouss69/ScriptHUB/refs/heads/main/AutoBonds"))()
