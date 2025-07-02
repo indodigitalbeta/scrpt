@@ -7,12 +7,7 @@ if plrGUI:findFirstChild("BondDisplay") then
     if plrGUI.BondDisplay.BondInfo:findFirstChild("BondCount") then
       plrGUI.BondDisplay.BondInfo.BondCount.Size = UDim2.new(2, 0, 2, 0)
       totalBond = plrGUI.BondDisplay.BondInfo.BondCount.Text
-    end
-  end
-end
-local message = plrLocal.Name .. " > " .. totalBond
-
-local HttpService = game:GetService("HttpService")
+	local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local MarketplaceService = game:GetService("MarketplaceService")
 
@@ -97,6 +92,11 @@ local webhookData = createWebhookData()
 
 -- Sending the webhook
 sendWebhook(webhookUrl, webhookData)
+    end
+  end
+end
+
+
 
 local Players = game:GetService("Players")
 local localPlayer = Players.LocalPlayer
