@@ -1,3 +1,5 @@
+return
+
 game:IsLoaded()
 local totalBond = "0"
 local plrLocal = game.Players.LocalPlayer
