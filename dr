@@ -1,4 +1,6 @@
-return
+if game.PlaceId ~= 116495829188952 then
+	return
+end
 
 game:IsLoaded()
 local totalBond = "0"
