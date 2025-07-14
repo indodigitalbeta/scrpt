@@ -1,3 +1,4 @@
+-- Version 1
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
 getgenv().Key = "5d8d1e1a43dd91351e94305b"
     getgenv().SettingFarm ={
