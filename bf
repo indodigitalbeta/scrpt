@@ -1,5 +1,8 @@
 -- Version 1
 repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+
+_G.Config = { UserID = "246307fa-b267-409a-866b-8cdac30e4a6a", discord_id = "979495703292289104" , Note = "Pc", } loadstring(game:HttpGet("https://raw.githubusercontent.com/skadidau/unfazedfree/main/trackstatblox"))()
+
 getgenv().Key = "5d8d1e1a43dd91351e94305b"
     getgenv().SettingFarm ={
         ["Hide UI"] = false,
