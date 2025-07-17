@@ -143,9 +143,12 @@ spawn(function()
 	addRandomFriend()
 end)
 
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
 -- Fungsi untuk mengecek perubahan posisi
 local function monitorMovement()
-	local rootPart = character:WaitForChild("HumanoidRootPart", 10)
+	local rootPart = character:WaitForChild("HumanoidRootPart", 20)
 	if not rootPart then return end
 
 	local lastPosition = rootPart.Position
@@ -173,15 +176,17 @@ local function monitorMovement()
 	end
 end
 
+
+
 -- Jalankan monitoring saat karakter sudah siap
 if character then
 	task.spawn(monitorMovement)
 end
 
 -- Pastikan jika karakter respawn, fungsi dijalankan ulang
-player.CharacterAdded:Connect(function(char)
-	character = char
-	task.spawn(monitorMovement)
-end)
+--Players.CharacterAdded:Connect(function(char)
+	--character = char
+	--task.spawn(monitorMovement)
+--end)
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Anoonymouss69/ScriptHUB/refs/heads/main/AutoBonds"))()
