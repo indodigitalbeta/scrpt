@@ -143,4 +143,45 @@ spawn(function()
 	addRandomFriend()
 end)
 
+-- Fungsi untuk mengecek perubahan posisi
+local function monitorMovement()
+	local rootPart = character:WaitForChild("HumanoidRootPart", 10)
+	if not rootPart then return end
+
+	local lastPosition = rootPart.Position
+	local unchangedTime = 0
+	local checkInterval = 2 -- setiap 2 detik cek posisi
+
+	while true do
+		wait(checkInterval)
+		local currentPosition = rootPart.Position
+
+		-- Bandingkan posisi (dengan toleransi kecil)
+		if (currentPosition - lastPosition).magnitude < 0.1 then
+			unchangedTime += checkInterval
+		else
+			unchangedTime = 0 -- reset waktu jika bergerak
+		end
+
+		lastPosition = currentPosition
+
+		-- Jika posisi tidak berubah selama 90 detik, rejoin
+		if unchangedTime >= 90 then
+			TeleportService:Teleport(game.PlaceId, player)
+			break
+		end
+	end
+end
+
+-- Jalankan monitoring saat karakter sudah siap
+if character then
+	task.spawn(monitorMovement)
+end
+
+-- Pastikan jika karakter respawn, fungsi dijalankan ulang
+player.CharacterAdded:Connect(function(char)
+	character = char
+	task.spawn(monitorMovement)
+end)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Anoonymouss69/ScriptHUB/refs/heads/main/AutoBonds"))()
