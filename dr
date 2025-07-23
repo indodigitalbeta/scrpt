@@ -170,7 +170,7 @@ local function monitorMovement()
 
 		-- Jika posisi tidak berubah selama 90 detik, rejoin
 		if unchangedTime >= 90 then
-			TeleportService:Teleport(game.PlaceId, player)
+			--TeleportService:Teleport(game.PlaceId, player)
 			break
 		end
 	end
@@ -179,9 +179,9 @@ end
 
 
 -- Jalankan monitoring saat karakter sudah siap
-if character then
-	task.spawn(monitorMovement)
-end
+--if character then
+	--task.spawn(monitorMovement)
+--end
 
 -- Pastikan jika karakter respawn, fungsi dijalankan ulang
 --Players.CharacterAdded:Connect(function(char)
